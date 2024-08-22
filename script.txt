@@ -1,0 +1,165 @@
+title Colorban
+author [R]
+noaction
+case_sensitive
+require_player_movement
+level_select
+level_select_solve_symbol -
+=
+OBJECTS
+=
+Background .
+#777
+_
+#777 #aaa
+00000
+01110
+01010
+01110
+00000
+Player :
+#f00 #ff0 #0f0 #0ff #00f #f0f #333
+01234
+1...5
+2.6.0
+3...1
+45012
+K
+#000
+R copy:_
+#f00 #0000
+Y copy:_
+#ff0 #0000
+G copy:_
+#0f0 #0000
+C copy:_
+#0ff #0000
+B copy:_
+#00f #0000
+M copy:_
+#f0f #0000
+W copy:_
+#fff #0000
+=
+LEGEND
+=
+I=R or Y or M or W
+O=G or C or Y or W
+H=B or M or C or W
+T=I or O or H or :
+;=: and _
+r=R and _
+y=Y and _
+g=G and _
+c=C and _
+b=B and _
+m=M and _
+w=W and _
+=
+SOUNDS
+=
+=
+COLLISIONLAYERS
+=
+Background
+_
+T,K
+=
+RULES
+=
+[> T|I]->[> T|> I]
++[< T|O]->[< T|< O]
++[^ T|H]->[^ T|^ H]
++[v T|H]->[v T|v H]
+=
+WINCONDITIONS
+=
+all _ on T
+=
+LEVELS
+=
+
+section Tutorial
+message Tutorial
+
+message K = Stop
+:K...
+.K.K.
+.K.K.
+.K.K.
+...K_
+section Primary
+message R = Push
+_.KK
+K.KK
+..KK
+..KK
+.r.:
+r...
+message G = Pull
+K..K
+K_.K
+K..K
+Kg.G
+...;
+...K
+message B = Hold
+KKK:KKK
+..B.B..
+.B...B.
+B.....B
+.......
+K.....K
+._____.
+section Secondary
+message G + B = Cyan
+:..KK
+..._K
+.....
+K_...
+KK..C
+message R + B = Magenta
+:..KK
+..._K
+.....
+K_...
+KK..M
+message R + G = Yellow
+:..KK
+..._K
+.....
+K_...
+KK..Y
+section White
+message R + G + B = White
+...;K
+_KKKK
+.K...
+.K..W
+.K.K.
+.....
+.....
+section Level 1
+message Welcome To Colorban! \nYour journey begins here!
+.............
+..BYB...___..
+.BBYBB._____.
+.YY:YY._____.
+.BBYBB._____.
+..BYB...___..
+.............
+section Level 2
+message Get all crates on goals!
+;....
+.....
+....R
+.....
+B.g__
+section Level 3
+message Colorban in Colorban
+RYGCB
+Y___M
+G_:_R
+C___Y
+BMRYG
+message You win!
